@@ -16,7 +16,9 @@ Como se ha comentado anteriormente se utilizará el entorno de desarrollo de Ard
 
 https://www.arduino.cc/
 
-En la sección "Download" podremos encontrar una imagen como en la que podemos encontrar las diferentes versiones para cada sistema operativo.
+En la sección "Download" podremos encontrar las diferentes versiones para cada sistema operativo.
+
+![Sección Download](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/descargas.png)
 
 Windows aparecen 3 versiones:
  - Windows Installer: Descarga un instalador que instala el programa como un programa más.
@@ -42,6 +44,8 @@ No aparecerá la siguiente ventana en la que deberemos de incluir la siguiente U
 
 http://arduino.esp8266.com/package_esp8266com_index.json
 
+![Preferencias](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/preferencias.png)
+
 Esto permitirá al entorno el acceso de un repositorio con librerias y configuraciones de las placas que hacen uso del chip ESP8266.
 
 ## Instalación del plugin para el Chip ESP8266
@@ -52,6 +56,7 @@ Una vez indicado el repositorio deberemos de navegar de nuevo el menu superior d
 
 Nos aparecerá una ventana como la siguiente:
 
+![Gestor de Placas](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/gestorPlacas.png)
 
 En ella deberemos de pulsar en el campo superior derecha del buscador y escribir:
 
