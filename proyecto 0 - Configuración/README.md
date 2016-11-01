@@ -19,15 +19,15 @@ https://www.arduino.cc/
 En la sección "Download" podremos encontrar una imagen como en la que podemos encontrar las diferentes versiones para cada sistema operativo.
 
 Windows aparecen 3 versiones:
-    - Windows Installer: Descarga un instalador que instala el programa como un programa más.
-    - Windows ZIP file for non admin install: Descarga un fichero comprimido que se puede extraer y utilizarlo (no es necesario instalar nada, útil cuando no somos administradores del sistema).
-    - Windows app: Instala el entorno desde el store de Windows.
+ - Windows Installer: Descarga un instalador que instala el programa como un programa más.
+ - Windows ZIP file for non admin install: Descarga un fichero comprimido que se puede extraer y utilizarlo (no es necesario instalar nada, útil cuando no somos administradores del sistema).
+ - Windows app: Instala el entorno desde el store de Windows.
 Mac OS X hay una única versión:
-    - Mac OS X 10.7 Lion or newer: Se instala como cualquier otro programa en Mac OS S
+ - Mac OS X 10.7 Lion or newer: Se instala como cualquier otro programa en Mac OS S
 Linux aparecen 3 versiones:
-    - Linux 32 bits: Instalador para versiones de 32 bits.
-    - Linux 64 bits: Instalador para versiones de 64 bits.
-    - Linux ARM (experimental): Instalador para versiones de linux en placas ARM como la Raspberry Pi.
+ - Linux 32 bits: Instalador para versiones de 32 bits.
+ - Linux 64 bits: Instalador para versiones de 64 bits.
+ - Linux ARM (experimental): Instalador para versiones de linux en placas ARM como la Raspberry Pi.
 
 ## Inclusión del Repositorio para la instalación del chip ESP8266
 
