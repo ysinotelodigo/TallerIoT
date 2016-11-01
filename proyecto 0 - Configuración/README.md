@@ -22,8 +22,10 @@ Windows aparecen 3 versiones:
  - Windows Installer: Descarga un instalador que instala el programa como un programa más.
  - Windows ZIP file for non admin install: Descarga un fichero comprimido que se puede extraer y utilizarlo (no es necesario instalar nada, útil cuando no somos administradores del sistema).
  - Windows app: Instala el entorno desde el store de Windows.
+
 Mac OS X hay una única versión:
- - Mac OS X 10.7 Lion or newer: Se instala como cualquier otro programa en Mac OS S
+ - Mac OS X 10.7 Lion or newer: Se instala como cualquier otro programa en Mac OS S.
+
 Linux aparecen 3 versiones:
  - Linux 32 bits: Instalador para versiones de 32 bits.
  - Linux 64 bits: Instalador para versiones de 64 bits.
