@@ -6,9 +6,10 @@ En esta sección del reposititorio se explica los pasos que se han de seguir par
 
 Antes de proceder a la instalación es conveniente tener instalar los driver de la placa para su reconocimiento por parte del sistema operativo. Los drivers no tiene el nombre de chip principal de la placa ESP8266, sino el chip que permite la conmunicación de este chip con el ordenador por USB que es CH340. En los siguientes enlaces es posible descargase los drivers para los principales sistemas operativos:
 
-- Windows:
-- Mac OS X:
-- Linux (Ubuntu, Debian,..): No es necesario drivers
+- Windows: [Driver](https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH340_Windows.zip)
+- Mac OS X (El Capitán y versiones anteriores): [Driver](https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH340_MAC%20(Mac%20Capitan%20o%20anterior).zip)
+- Mac OS X (Sierra) : [Driver](https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH34x_Install_V1.3%20(Mac%20OS%20Sierra).pkg)
+- Linux (Ubuntu, Debian,..): [Driver](https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH340_Linux.zip)
 
 ## Descarga del Entorno de Desarrollo
 
@@ -68,6 +69,10 @@ Nos aparecerá un único resultado que deberemos de instalar.
 
 Una vez instalado el plugin para la placas basadas en el chip ESP8266, deberemos de indicar al entorno que hacemos uso de esta placa. Con la placa NodeMCU conectada por usb en el ordenador deberemos de ir al menu superior izquierda y hacer seleccionar las siguiente configuraciones:
 
-- Cualquier Sistema operativo: Herrameintas -> Placa: "..." -> NodeMCU v1.0 (ESP-12E)
+- Cualquier Sistema operativo: Herramientas -> Placa: "..." -> NodeMCU v1.0 (ESP-12E)
+
+- Windows: Herramientas -> Puerto -> COM X (Donde X es un valor entero (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa))
+- Mac: Herramientas -> Puerto -> /dev/cu.wusbserie
+- Linux: Herramientas -> Puerto -> /dev/tty.XXXX (Donde X es un nombre o valor dado por los drivers (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa)
 
 ### ¡Con esto ya habremos terminado de congurar el entorno!
