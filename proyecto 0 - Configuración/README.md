@@ -1,6 +1,6 @@
 # Configuración del Entorno de Desarrollo
 
-En esta sección del reposititorio se explica los pasos que se han de seguir para la configuración del entorno de desarrollo. Un entorno de desarrollo (IDE) es un conjunto de programas que facilitan la tarea de programar y depurar el código que se implementa. En nuestro caso, utilizaremos el entorno de desarrollo de Arduino.
+En esta sección del reposititorio se explica los pasos que se han de seguir para la configuración del entorno de desarrollo. Un entorno de desarrollo (IDE) es un conjunto de herramientas que facilitan la tarea de programar y depurar el código que se implementa. En nuestro caso, utilizaremos el entorno de desarrollo de Arduino.
 
 ## Instalaciones Previas
 
@@ -72,7 +72,7 @@ Una vez instalado el plugin para la placas basadas en el chip ESP8266, deberemos
 - Cualquier Sistema operativo: Herramientas -> Placa: "..." -> NodeMCU v1.0 (ESP-12E)
 
 - Windows: Herramientas -> Puerto -> COM X (Donde X es un valor entero (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa))
-- Mac: Herramientas -> Puerto -> /dev/cu.wusbserie
-- Linux: Herramientas -> Puerto -> /dev/tty.XXXX (Donde X es un nombre o valor dado por los drivers (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa)
+- Mac: Herramientas -> Puerto -> /dev/cu.wchusbserieXX (Donde XX es un valor entero (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa))
+- Linux: Herramientas -> Puerto -> /dev/tty.XXX (Donde XXX es un nombre o valor dado por los drivers (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa)
 
 ### ¡Con esto ya habremos terminado de congurar el entorno!

@@ -9,6 +9,28 @@ En este primer proyecto se explicarán los primeros pasos que se han de seguir p
 
 ## Pasos a seguir
 
-Descargar el código que se encuentra en el siguiente enlace:
+1.- Abrir el entorno Arduino IDE.
+2.- Conectar la placa NodeMCU y configurar el entorno si no se ha hecho anteriormente.
+3.- Copiar en el editor de texto el siguiente código:
 
 [Hola Mundo](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%201%20-%20Hola%20Mundo%20(Nivel%20Ba%CC%81sico)/holaMundo/holaMundo.ino)
+
+4.- Pulsar sobre el segundo botón (el que parece una fecha hacia la derecha) de la parte superior derecha.
+5.- Esperar a que el entorno transfiera el código a la placa
+Podrás observar una barra de progreso en la consola inferior que hay en la ventana del entorno y un led que está parpadeando en la NodeMCU
+6.- Pulsar el botón que se encuentra en la parte superior derecha (el que aparece una lupa)
+7.- Podrás observar cómo la placa NodeMCU se está comunicando con el ordenador por el cable USB
+
+[!Imange](http://www.google.es)
+
+## Explicación general del Código
+
+La lógica de todos sketches o programas se divide en dos grandes partes (como todos los sketches para Arduino).
+- Función Setup: Se ejecuta el primero y una única vez
+- Función Loop: Se ejecuta de manera infinita en forma de bucle después de Setup
+
+## Explicación del Codigo de este ejemplo
+
+En el código Setup aparece una única línea que configura la velocidad a la que se van a comunicar la placa y el ordenador. Puede ser cambiada a cualquier valor válido (). Si se cambia habría que cambiar la consola de monitorización para que tenga el mismo valor.
+
+En el código Loop aparecen dos líneas. La primera escribe por el cable serial (el cable usb) el mensaje que aparece. La segunda línea indica a la placa que debe de esperar 3000 milisegundos que es igual a 3 segundos. Tras terminar de ejecutar esta línea de código se vuelve e ejecutar de nuevo la primera línea por eso aparece cada tres segundos un mensaje por consola.
