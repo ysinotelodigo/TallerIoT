@@ -7,7 +7,7 @@ En este primer proyecto se explicarán los primeros pasos que se han de seguir p
 - Ejeucutar: Acción que realiza la placa cuando ejecuta el código máquina alojado en su memoria.
 - Depurar: Acción de analizar qué está haciendo el código. Útil para conocer si nuestro código fuciona correctamente
 
-## Pasos a seguir
+## Pasos a Seguir
 
 1.- Abrir el entorno Arduino IDE.
 
@@ -26,15 +26,15 @@ Podrás observar una barra de progreso en la consola inferior que hay en la vent
 
 7.- Podrás observar cómo la placa NodeMCU se está comunicando con el ordenador por el cable USB.
 
-[!Imange](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/holaMundo.png)
+![Consola Hola Mundo](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/holaMundo.png)
 
-## Explicación general del Código
+## Explicación General del Código
 
 La lógica de todos sketches o programas se divide en dos grandes partes (como todos los sketches para Arduino).
 - Función Setup: Se ejecuta el primero y una única vez
 - Función Loop: Se ejecuta de manera infinita en forma de bucle después de Setup
 
-## Explicación del Codigo de este ejemplo
+## Explicación del Código de este Ejemplo
 
 En el código Setup aparece una única línea que configura la velocidad a la que se van a comunicar la placa y el ordenador. Puede ser cambiada a cualquier valor válido (300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 74880, 115200, 230400, 250000). Si se desea cambiarlo habría que indicar en la consola de monitorización la misma velocidad para que se haga correctamente.
 
