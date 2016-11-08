@@ -22,7 +22,7 @@ El objetivo de este ejemplo es permitir un primer contacto con la placa NodeMCU,
 
 6.- Abrir el entorno y copiar el siguiente código:
 
-[Hacer parpadear un led](https://github.com/ysinotelodigo/TallerIoT/blob/master/Led%20(Nivel%20Ba%CC%81sico)%20/parpadearLed/parpadearLed.ino)
+[Hacer parpadear un led](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%202%20-%20Led%20(Nivel%20Ba%CC%81sico)%20/parpadearLed/parpadearLed.ino)
 
 7.-  Pulsar el segundo botón del entorno para compilar y subir el código.
 
