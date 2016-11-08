@@ -26,7 +26,7 @@ Podrás observar una barra de progreso en la consola inferior que hay en la vent
 
 7.- Podrás observar cómo la placa NodeMCU se está comunicando con el ordenador por el cable USB.
 
-[!Imange](http://www.google.es)
+[!Imange](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/holaMundo.png)
 
 ## Explicación general del Código
 
@@ -36,6 +36,6 @@ La lógica de todos sketches o programas se divide en dos grandes partes (como t
 
 ## Explicación del Codigo de este ejemplo
 
-En el código Setup aparece una única línea que configura la velocidad a la que se van a comunicar la placa y el ordenador. Puede ser cambiada a cualquier valor válido (). Si se cambia habría que cambiar la consola de monitorización para que tenga el mismo valor.
+En el código Setup aparece una única línea que configura la velocidad a la que se van a comunicar la placa y el ordenador. Puede ser cambiada a cualquier valor válido (300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 74880, 115200, 230400, 250000). Si se desea cambiarlo habría que indicar en la consola de monitorización la misma velocidad para que se haga correctamente.
 
 En el código Loop aparecen dos líneas. La primera escribe por el cable serial (el cable usb) el mensaje que aparece. La segunda línea indica a la placa que debe de esperar 3000 milisegundos que es igual a 3 segundos. Tras terminar de ejecutar esta línea de código se vuelve e ejecutar de nuevo la primera línea por eso aparece cada tres segundos un mensaje por consola.
