@@ -10,16 +10,21 @@ En este primer proyecto se explicarán los primeros pasos que se han de seguir p
 ## Pasos a seguir
 
 1.- Abrir el entorno Arduino IDE.
+
 2.- Conectar la placa NodeMCU y configurar el entorno si no se ha hecho anteriormente.
+
 3.- Copiar en el editor de texto el siguiente código:
 
 [Hola Mundo](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%201%20-%20Hola%20Mundo%20(Nivel%20Ba%CC%81sico)/holaMundo/holaMundo.ino)
 
 4.- Pulsar sobre el segundo botón (el que parece una fecha hacia la derecha) de la parte superior derecha.
+
 5.- Esperar a que el entorno transfiera el código a la placa
-Podrás observar una barra de progreso en la consola inferior que hay en la ventana del entorno y un led que está parpadeando en la NodeMCU
-6.- Pulsar el botón que se encuentra en la parte superior derecha (el que aparece una lupa)
-7.- Podrás observar cómo la placa NodeMCU se está comunicando con el ordenador por el cable USB
+Podrás observar una barra de progreso en la consola inferior que hay en la ventana del entorno y un led que está parpadeando en la NodeMCU.
+
+6.- Pulsar el botón que se encuentra en la parte superior derecha (el que aparece una lupa).
+
+7.- Podrás observar cómo la placa NodeMCU se está comunicando con el ordenador por el cable USB.
 
 [!Imange](http://www.google.es)
 
