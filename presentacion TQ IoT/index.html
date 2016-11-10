@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dispara tu creatividad y sé tu también un inventor</title>
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h2><strong>DISPARA TU CREATIVIDAD Y SÉ TU TAMBIÉN UN INVENTOR</strong></h2>
+<h4>Álvaro Montero y Mónica Sánchez</h4>
+<img src="imagenes/logosemanaciencia_alta.jpg" alt="logo semana de la ciencia" width="220px" height="112px" /><a href="http://dei.inf.uc3m.es/dei_web/dei_web/index.php"><img src ="imagenes/DEI_logo.png" alt="logo DEI" /></a> <img src="imagenes/uc3m_logo.png" alt="logo semana de la ciencia" width="200px" height="150px" />
+</section>
+<section>
+<h4>La figura de Torres Quevedo</h4>
+<img src ="imagenes/Torres_Quevedo.jpg" alt="imagen Torres Quevedo">
+<p>“El más prodigioso inventor de su tiempo” Maurice D’Ocagne (Presidente de la Sociedad Matemática Francesa) (1862 - 1938)</p>
+</section>
+<section>
+  <h3>Inventos de Torres Quevedo</h3>
+  <li><strong> La patente del transbordador</strong>, un funicular
+aéreo suspendido, cuya tensión se mantiene siempre constante, independientemente de la carga que soporten o de la posición que ocupe a lo largo del recorrido.</li>
+<a href="https://www.youtube.com/watch?v=mA7bQzijKUk"> <img src ="imagenes/trasbordador_cataratas_del_nigara.jpg" alt="imagen Torres Quevedo"></a>
+</section>
+<section>
+  <h3>Inventos de Torres Quevedo</h3>
+  <li><strong> Dirigible</strong>, el inventor español revoluciona el panorama aeronáutico en 1902 con la patente "Perfectionnements aux aérostats dirigeables", en la que pre- senta un nuevo tipo de dirigible que recogería las ventajas de los sistemas precedentes, eliminando todos sus inconvenientes.</li>
+<img src ="imagenes/Dirigible_torres_Quevedo.png" alt="imagen Torres Quevedo">
+</section>
+
+<section>
+  <h3>Inventos de Torres Quevedo</h3>
+  <li><strong> Telekino</strong>, el primer
+dispositivo de mando a distancia de la historia.</li>
+<img src ="imagenes/telekino.jpg" alt="imagen Torres Quevedo" width="720px" height="520px">
+</section>
+
+<section>
+  <h3>Inventos de Torres Quevedo</h3>
+  <li><strong> El ajedrecista</strong>, construido en 1912. La máquina causó sensación en la Feria de París de 1914 y obtuvo una mención en la prestigiosa revisa Scientific American</li>
+<a href="https://www.youtube.com/watch?v=YoZ389Rs5s8"> <img src ="imagenes/ajedrecista.jpg" alt="imagen Torres Quevedo" ></a><img src = "imagenes/SciAmer.JPG" alt="imagen Torres Quevedo" >
+</section>
+
+
+<script src="lib/js/head.min.js">
+</script>
+<script src="js/reveal.min.js">
+</script>
+<script>
+
+                        // Full list of configuration options available here:
+                        // https://github.com/hakimel/reveal.js#configuration
+                        Reveal.initialize({
+                                controls: true,
+                                progress: true,
+                                history: true,
+                                keyboard: true,
+
+                                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+                                // Optional libraries used to extend on reveal.js
+                                dependencies: [
+                                        { src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+                                        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                                        { src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: 'plugin/zoom-js/zoom.js', condition: function() { return !!document.body.classList; } },
+                                        { src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+                                        { src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } }
+                                ]
+                        });
+
+</script></div>
+</div>
+</body>
+</html>
