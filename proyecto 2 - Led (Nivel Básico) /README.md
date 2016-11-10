@@ -8,15 +8,15 @@ El objetivo de este ejemplo es permitir un primer contacto con la placa NodeMCU,
 
 2.- Colocar la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.
 
-![Imagen]()
+![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/baseInicial.png)
 
 3.- Colocar una resistencia de 220 Ohmios (cualquiera del kit) que haga de puente en la fila donde se encuentre el pin D5 como en la imagen.
 
-![Imagen]()
+![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/resistenciaD5.png)
 
 4.- Seleccionar cualquier led del kit y conectarlo de la siguiente forma. El pin que es más largo (ánodo (+)) deberá ir conectado en la otra fila donde salte la resistencia y el pin más corto (cátodo (-)) en la fila superior o inferior. Por último conectar un cable con la fila seleccionada donde esté el pin más corto del led con cualquier fila que ponga la letra G de Ground (Tierra). El esquema debe quedar parecido a la imagen.
 
-![Imagen]()
+![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/led.png)
 
 5.- Conectar la placa al ordenador por el cable usb
 
