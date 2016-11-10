@@ -8,11 +8,11 @@ Este proyecto tiene como objetivo verificar el correcto funcionamiento de un cir
 
 2.- Colocar la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.
 
-![Imagen]()
+![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/baseInicial.png)
 
 3.- Colocar las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:
 
-![Imagen]()
+![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/semaforo.png)
 
 4.- Conectar la placa al ordenador por el cable usb
 
