@@ -1,28 +1,28 @@
 # Semáforo
 
-Este proyecto tiene como objetivo verificar el correcto funcionamiento de un circuito sencillo que simula un semáforo que posteriormente será utilizado para hacer otros ejemplos.
+Este proyecto tiene como objetivo verificar el correcto funcionamiento de un circuito sencillo que simula un semáforo. Posteriormente en los dos siguientes proyectos será usado este circuito.
 
 ## Pasos a Seguir
 
-1.- Desconectar el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)
+1.- Desconecte el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)
 
-2.- Colocar la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.
+2.- Coloque la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.
 
 ![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/baseInicial.png)
 
-3.- Colocar las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:
+3.- Coloque las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:
 
 ![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/semaforo.png)
 
-4.- Conectar la placa al ordenador por el cable usb
+4.- Conecte la placa al ordenador por el cable usb
 
-5.- Abrir el entorno y copiar el siguiente código:
+5.- Abra el entorno y copiar el siguiente código:
 
 [Semáforo](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%204%20-%20Sema%CC%81foro%20(Nivel%20Ba%CC%81sico)/semaforo/semaforo.ino)
 
-3.-  Pulsar el segundo botón del entorno para compilar y subir el código.
+6.-  Pulse el segundo botón del entorno para compilar y subir el código.
 
-4.- Tras transferir el código podrás ver que los leds se comportan como si fueran las luces de un semáforo. Si pulsas sobre el botón de la consola de monitorización (botón superior derecha en el que aparece una lupa) podrás ver que por consola indica qué led se va a encender.
+7.- Tras transferir el código podrá ver que los leds se comportan como si fueran las luces de un semáforo. Si pulsas sobre el botón de la consola de monitorización (botón superior derecha en el que aparece una lupa) podrás ver que por consola indica qué led se va a encender.
 
 ## Explicación del Código de este Ejemplo
 

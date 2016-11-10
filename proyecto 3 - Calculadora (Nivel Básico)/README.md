@@ -4,13 +4,13 @@ El objetivo de este tutorial es mostrar un ejemplo de comunicación bidirecciona
 
 ## Pasos a Seguir
 
-1.- Conectar la placa al ordenador por el cable usb
+1.- Conecte la placa al ordenador por el cable usb
 
-2.- Abrir el entorno y copiar el siguiente código:
+2.- Abra el entorno y copiar el siguiente código:
 
 [Calculadora](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%203%20-%20Calculadora%20(Nivel%20Ba%CC%81sico)/calculadora/calculadora.ino)
 
-3.-  Pulsar el segundo botón del entorno para compilar y subir el código.
+3.-  Pulse el segundo botón del entorno para compilar y subir el código.
 
 4.- Tras transferir el código abra la consola de monitorización (botón superior derecha en el que aparece una lupa). Cuando lo abra escriba números en el campo y pulse enviar. Podrá ver como va sumando el valor que se envia con todos los anteriores valores enviados.
 
