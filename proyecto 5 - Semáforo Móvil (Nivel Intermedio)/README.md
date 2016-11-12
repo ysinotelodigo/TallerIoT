@@ -20,9 +20,9 @@ El objetivo de este ejemplo es mostrar cómo crear un punto de acceso Wifi con l
 
 5.- Abra el entorno y copiar el siguiente código:
 
-[Semáforo](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%204%20-%20Sema%CC%81foro%20(Nivel%20Ba%CC%81sico)/semaforo/semaforo.ino)
+[Semáforo](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%205%20-%20Sema%CC%81foro%20Mo%CC%81vil%20(Nivel%20Intermedio)/semaforoMovil/semaforoMovil.ino)
 
-6.- Modifique el valor que se encuentra entre comillas en la línea XXX por uno inventado que pueda recordar facilmente. Este valor será el nombre del punto de acceso wifi al cual se conectará su móvil.
+6.- Modifique el valor que se encuentra entre comillas en la línea 42 por uno inventado que pueda recordar facilmente. Este valor será el nombre del punto de acceso wifi al cual se conectará su móvil.
 
 7.-  Pulse el segundo botón del entorno para compilar y subir el código.
 
