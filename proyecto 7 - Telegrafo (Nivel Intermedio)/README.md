@@ -16,17 +16,21 @@ El objetivo de este ejemplo es mostrar cómo se puede conectar la placa a un bro
 
 4.- Conecte la placa al ordenador por el cable usb
 
-5.- Abra el entorno y copiar el siguiente código:
+5.- Descargue las librería Adafruit MQTT que se usará en este ejemplo. Vaya al menus superior "Programa"-> "Incluir Liberías" -> "Gestionar Librerías" y busque "Adafruit MQTT"
+
+![Imagen](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/adafruitMQTT.png)
+
+6.- Abra el entorno y copiar el siguiente código:
 
 [Semáforo](https://github.com/ysinotelodigo/TallerIoT/blob/master/proyecto%207%20-%20Telegrafo%20(Nivel%20Intermedio)/telegrafo/telegrafo.ino)
 
-6.- Modique el nombre del Emisor y Receptor de los mensajes que se morse. Hable con otro grupo para intercambiaros el Emisor y Receptor. (Línea 33 y 34)
+7.- Modique el nombre del Emisor y Receptor de los mensajes que se morse. Hable con otro grupo para intercambiaros el Emisor y Receptor. (Línea 33 y 34)
 
-7.-  Pulse el segundo botón del entorno para compilar y subir el código.
+8.-  Pulse el segundo botón del entorno para compilar y subir el código.
 
-8.- Tras transferir el código abra la consola de monitorización y verifique que se conecta a la red.
+9.- Tras transferir el código abra la consola de monitorización y verifique que se conecta a la red.
 
-9.- Una vez conectados ambos se podrá empezar la comunicación por morse
+10.- Una vez conectados ambos se podrá empezar la comunicación por morse
 
 ## Explicación del Código de este Ejemplo
 
