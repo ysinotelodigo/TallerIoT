@@ -21,8 +21,10 @@
 
 /************************* WiFi Access Point *********************************/
 
-#define WLAN_SSID       "dlink"
-#define WLAN_PASS       "54C84360"
+// Introducir el nombre de la red wifi
+#define WLAN_SSID       "nombre red wifi"
+// Introducir la contraseña de la red wifi
+#define WLAN_PASS       "contraseña wifi"
 
 /************************* Adafruit.io Setup *********************************/
 
