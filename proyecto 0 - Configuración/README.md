@@ -43,7 +43,7 @@ Una vez abierto el entorno deberemos de navegar en el menu superior izquierda a:
 
 No aparecerá la siguiente ventana en la que deberemos de incluir la siguiente URI en el campo "Gestor de URLs Adicionales de Tarjetas:"
 
-http://arduino.esp8266.com/package_esp8266com_index.json
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 ![Preferencias](https://raw.githubusercontent.com/ysinotelodigo/TallerIoT/master/recursos%20tutoriales/preferencias.png)
 
