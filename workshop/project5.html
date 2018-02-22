@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IoT Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">IoT Workshop</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Tutorial 5:
+        <small>Semáforo Básico</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Tutorial 5: Semáforo Básico</li>
+      </ol>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="img-fluid rounded mb-4" src="images/mainTrafficLight.jpg" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+          <h2>Objetivo:</h2>
+          <p>Este proyecto tiene como objetivo verificar el correcto funcionamiento de un circuito sencillo que simula un semáforo. Posteriormente en los dos siguientes proyectos será usado este circuito.</p>
+        </div>
+<div class="col-12">
+     <h2>Pasos a Seguir</h2>
+<ol>
+    <li>Desconecte el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)</li>
+    <li>Coloque la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.</li>
+<img src="images/baseInicial.png" alt="Base Inicial"/>
+    <li>Coloque las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:</li>
+<img src="images/semaforo.png" alt="Semaforo"/>
+    <li>Conecte la placa al ordenador por el cable usb</li>
+    <li>Abra el entorno y copiar el siguiente código:</li>
+<code style="border-style: solid;display: block;">
+<br>
+void setup() {<br>
+&nbsp;&nbsp;// Pon aquí tu código que será ejecutado solo una vez:<br>
+<br>
+&nbsp;&nbsp;// Inicia la comunicación entre la placa y el ordenador<br>
+&nbsp;&nbsp;Serial.begin(9600);<br>
+&nbsp;&nbsp;// Indica que el pin D1 será de salida (Led rojo)<br>
+&nbsp;&nbsp;pinMode(D1,OUTPUT);<br>
+&nbsp;&nbsp;// Indica que el pin D5 será de salida (Led ambar)<br>
+&nbsp;&nbsp;pinMode(D5,OUTPUT);<br>
+&nbsp;&nbsp;// Indica que el pin D8 será de salida (Led verde)<br>
+&nbsp;&nbsp;pinMode(D8,OUTPUT);<br>
+}<br>
+<br>
+void loop() {<br>
+&nbsp;&nbsp;// Pon aquí tu código principal, para que repita constantemente:<br>
+<br>
+&nbsp;&nbsp;// Envia un mensaje al ordenador indicando qué va a hacer<br>
+&nbsp;&nbsp;Serial.println("Se enciende la luz verde");<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje alta de 3.3 voltios en el pin D8<br>
+&nbsp;&nbsp;digitalWrite(D8,HIGH);<br>
+&nbsp;&nbsp;// Indica que se espere 3000 milisegundos = 3 segundos<br>
+&nbsp;&nbsp;delay(3000);<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje baja de 0 voltios en el pin D8<br>
+&nbsp;&nbsp;digitalWrite(D8,LOW);<br>
+<br>
+&nbsp;&nbsp;// Envia un mensaje al ordenador indicando qué va a hacer<br>
+&nbsp;&nbsp;Serial.println("Se enciende la luz ambar");<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje alta de 3.3 voltios en el pin D5<br>
+&nbsp;&nbsp;digitalWrite(D5,HIGH);<br>
+&nbsp;&nbsp;// Indica que se espere 1000 milisegundos = 1 segundo<br>
+&nbsp;&nbsp;delay(1000);<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje baja de 0 voltios en el pin D8<br>
+&nbsp;&nbsp;digitalWrite(D5,LOW);<br>
+<br>
+&nbsp;&nbsp;// Envia un mensaje al ordenador indicando qué va a hacer<br>
+&nbsp;&nbsp;Serial.println("Se enciende la luz rojo");<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje alta de 3.3 voltios en el pin D1<br>
+&nbsp;&nbsp;digitalWrite(D1,HIGH);<br>
+&nbsp;&nbsp;// Indica que se espere 3000 milisegundos = 3 segundos<br>
+&nbsp;&nbsp;delay(3000);<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje baja de 0 voltios en el pin D8<br>
+&nbsp;&nbsp;digitalWrite(D1,LOW);<br>
+}<br>
+<br>
+</code>
+    <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+
+
+
+<li>Tras transferir el código podrá ver que los leds se comportan como si fueran las luces de un semáforo. Si pulsas sobre el botón de la consola de monitorización (botón superior derecha en el que aparece una lupa) podrás ver que por consola indica qué led se va a encender.</li>
+
+</ol>
+
+<h2>Explicación del Código de este Ejemplo</h2>
+
+<p>La función Setup se encarga de indicar la velocidad a la que se comunciará la placa con el ordenador e configurar los pines D1, D5 y D8 como pines de salida de señal o voltaje.</p>
+
+<p>La función Loop está dividida en tres fases:</p>
+<ul>
+    <li>Fase 1 Luz Verde: Indica que se va a encender el led verde, se enciende el led verde, se espera 3 segundos y se apaga el led.</li>
+    <li>Fase 2 Luz Ambar: Indica que se va a encender el led ambar, se enciende el led ambar, se espera 1 segundo y se apaga el led.</li>
+    <li>Fase 3 Luz Roja: Indica que se va a encender el led rojo, se enciende el led rojo, se espera 3 segundos y se apaga el led.</li>
+</ul>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Team Members -->
+     
+
+   
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Taller de Internet of Things. Mónica Sánchez de Francisco y Álvaro Montero Montes. Universidad Carlos III de Madrid.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

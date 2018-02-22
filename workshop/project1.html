@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IoT Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">IoT Workshop</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Tutorial 1:
+        <small>Configuración</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Tutorial 1: Configuración</li>
+      </ol>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="img-fluid rounded mb-4" src="images/tutorial.png" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+          <h2>Objetivo:</h2>
+          <p>En esta sección del reposititorio se explica los pasos que se han de seguir para la configuración del entorno de desarrollo. Un entorno de desarrollo (IDE) es un conjunto de herramientas que facilitan la tarea de programar y depurar el código que se implementa. En nuestro caso, utilizaremos el entorno de desarrollo de Arduino.</p>
+        </div>
+<div class="col-12">
+           <h2>Instalaciones Previas</h2>
+
+<p>Antes de proceder a la instalación es conveniente tener instalar los driver de la placa para su reconocimiento por parte del sistema operativo. Los drivers no tiene el nombre de chip principal de la placa ESP8266, sino el chip que permite la conmunicación de este chip con el ordenador por USB que es CH340. En los siguientes enlaces es posible descargase los drivers para los principales sistemas operativos:</p>
+<ul>
+    <li>Windows: <a href="https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH340_Windows.zip">Driver</a> </li>
+     <li>Mac OS X (El Capitán y versiones anteriores): <a href="https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH340_MAC%20(Mac%20Capitan%20o%20anterior).zip">Driver</a></li>
+     <li>Mac OS X (Sierra) : <a href="https://github.com/ysinotelodigo/TallerIoT/raw/master/proyecto%200%20-%20Configuracio%CC%81n/CH34x_Install_V1.3%20(Mac%20OS%20Sierra).pkg">Driver</a></li>
+     <li>Linux (Ubuntu, Debian,..): No son necesarios</li>
+</ul>
+
+<h2>Descarga del Entorno de Desarrollo</h2>
+
+<p>Como se ha comentado anteriormente se utilizará el entorno de desarrollo de Arduino al cual se le instalará una serie de "plugins" que permitirá el desarrollo de las placas basadas en el chip ESP8266. Dicho entorno se puede descargar desde la siguiente página web:</p>
+
+<p><a href="https://www.arduino.cc/">https://www.arduino.cc/</a></p>
+
+<p>En la sección "Download" podremos encontrar las diferentes versiones para cada sistema operativo.</p>
+
+<img src="images/descargas.png" alt="Sección Descargas" width/>
+    
+
+
+
+<p>Windows aparecen 3 versiones:</p>
+
+<ul>
+    <li>Windows Installer: Descarga un instalador que instala el programa como un programa más.</li>
+    <li>Windows ZIP file for non admin install: Descarga un fichero comprimido que se puede extraer y utilizarlo (no es necesario instalar nada, útil cuando no somos administradores del sistema).</li>
+    <li>Windows app: Instala el entorno desde el store de Windows.</li>
+</ul>
+
+
+<p>Mac OS X hay una única versión:</p>
+<ul>
+    <li>Mac OS X 10.7 Lion or newer: Se instala como cualquier otro programa en Mac OS S.</li>
+</ul>
+
+<p>Linux aparecen 3 versiones:</p>
+<ul>
+    <li>Linux 32 bits: Instalador para versiones de 32 bits.</li>
+    <li>Linux 64 bits: Instalador para versiones de 64 bits.</li>
+    <li>Linux ARM (experimental): Instalador para versiones de linux en placas ARM como la Raspberry Pi.</li>
+</ul>
+
+<h2>Inclusión del Repositorio para la instalación del chip ESP8266</h2>
+
+<p>Una vez abierto el entorno deberemos de navegar en el menu superior izquierda a:</p>
+<ul>
+    <li>Windows: Archivo -> Preferencias...</li>
+    <li>Mac OS X: Arduino -> Preferences...</li>
+</ul>
+<p>No aparecerá la siguiente ventana en la que deberemos de incluir la siguiente URI en el campo "Gestor de URLs Adicionales de Tarjetas:"</p>
+
+<p><a href="http://arduino.esp8266.com/stable/package_esp8266com_index.json">http://arduino.esp8266.com/stable/package_esp8266com_index.json</a></p>
+
+<img src="images/preferencias.png" alt="Preferencias"/>
+
+<p>Esto permitirá al entorno el acceso de un repositorio con librerias y configuraciones de las placas que hacen uso del chip ESP8266.</p>
+
+<h2>Instalación del plugin para el Chip ESP8266</h2>
+
+<p>Una vez indicado el repositorio deberemos de navegar de nuevo el menu superior derecha a:</p>
+
+<ul>
+    <li>Cualquier Sistema operativo: Herramientas -> Placa: "..." -> Gestor de Tarjetas...</li>
+</ul>
+
+<p>Nos aparecerá una ventana como la siguiente:</p>
+
+<img src="images/gestorPlacas.png" alt="Gestor de Placas"/>
+
+<p>En ella deberemos de pulsar en el campo superior derecha del buscador y escribir:</p>
+
+<p>ESP8266</p>
+
+<p>Nos aparecerá un único resultado que deberemos de instalar.</p>
+
+<h2>Último Paso de la Configuración</h2>
+
+<p>Una vez instalado el plugin para la placas basadas en el chip ESP8266, deberemos de indicar al entorno que hacemos uso de esta placa. Con la placa NodeMCU conectada por usb en el ordenador deberemos de ir al menu superior izquierda y hacer seleccionar las siguiente configuraciones:</p>
+<ul>
+    <li>Cualquier Sistema operativo: Herramientas -> Placa: "..." -> NodeMCU v1.0 (ESP-12E)</li>
+
+    <li>Windows: Herramientas -> Puerto -> COM X (Donde X es un valor entero (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa))</li>
+
+    <li>Mac: Herramientas -> Puerto -> /dev/cu.wchusbserieXX (Donde XX es un valor entero (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa))</li>
+
+    <li>Linux: Herramientas -> Puerto -> /dev/tty.XXX (Donde XXX es un nombre o valor dado por los drivers (si hay varias opciones se puede conocer cuál es conectado y desconectado la placa)</li>
+</ul>
+
+<h3>¡Con esto ya habremos terminado de congurar el entorno!</h3>
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Team Members -->
+     
+
+   
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Taller de Internet of Things. Mónica Sánchez de Francisco y Álvaro Montero Montes. Universidad Carlos III de Madrid.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

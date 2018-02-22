@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IoT Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">IoT Workshop</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Tutorial 4:
+        <small>Calculadora</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Tutorial 4: Calculadora</li>
+      </ol>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="img-fluid rounded mb-4" src="images/mainCalc.jpg" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+          <h2>Objetivo:</h2>
+          <p>El objetivo de este tutorial es mostrar un ejemplo de comunicación bidireccional entre la placa y el ordenador por el cable de serie (cable usb)</p>
+        </div>
+<div class="col-12">
+     <h2>Pasos a Seguir</h2>
+<ol>
+    <li>Conecte la placa al ordenador por el cable usb.</li>
+    <li>Abra el entorno y copiar el siguiente código:</li>
+<code style="border-style: solid;display: block;">
+<br>
+// Esta variable almacenará la cantidad que lleva sumada<br>
+int sumaTotal;<br>
+<br>
+void setup() {<br>
+&nbsp;&nbsp;// Este método se ejecuta una sola vez (Se ejecuta el primero de todos)<br>
+  <br>
+&nbsp;&nbsp;// La siguiente línea indica que la placa se comunicará a una velocidad de 9600 bits por segundo*<br>
+&nbsp;&nbsp;Serial.begin(9600);<br>
+<br>
+&nbsp;&nbsp;// A la variable sumaTotal se le dará inicialmente el valor 0<br>
+&nbsp;&nbsp;sumaTotal =0;<br>
+<br>
+&nbsp;&nbsp;// La siguiente línea indica cuantos milisegundos esperará o dormirá la placa (1000 milisegundos = 1 segundo)<br>
+&nbsp;&nbsp;// Su objetivo es esperar a que esté conectada la placa y el ordenador <br>
+&nbsp;&nbsp;delay(2000);<br>
+&nbsp;&nbsp;// La siguiente línea escribe una línea en blanco<br>
+&nbsp;&nbsp;Serial.println("");<br>
+}<br>
+<br>
+void loop() {<br>
+&nbsp;&nbsp;// Este método se ejecutará como un bucle de manera infinita<br>
+<br>
+&nbsp;&nbsp;// La siguiente línea enviar un mensaje desde la placa al ordenador<br>
+&nbsp;&nbsp;Serial.println("Escribe un número para ir sumandolo:");<br>
+<br>
+&nbsp;&nbsp;// El siguiente conjunto de líneas revisa si hay caracteres disponibles para leer la placa<br>
+&nbsp;&nbsp;// desde el ordenador<br>
+&nbsp;&nbsp;while(Serial.available() == false){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;delay(100);<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;// Lee el número que se ha recibido por el usb (si es texto se devuelve un 0)<br>
+&nbsp;&nbsp;int sumando = Serial.parseInt();<br>
+&nbsp;&nbsp;// Hace la suma de lo que llevaba y el nuevo valor y lo guarda en la suma total.<br>
+&nbsp;&nbsp;sumaTotal = sumaTotal + sumando;<br>
+<br>
+&nbsp;&nbsp;// La siguiente línea enviar un mensaje desde la placa al ordenador<br>
+&nbsp;&nbsp;// Hay que destacar que pone print en vez de println (el "ln" significa nueva línea al final del todo)<br>
+&nbsp;&nbsp;Serial.print("Suma Total: ");<br>
+&nbsp;&nbsp;// La siguiente línea el valor que tiene sumaTotal<br>
+&nbsp;&nbsp;Serial.println(sumaTotal);<br>
+}<br>
+<br>
+<br>
+/* * En Internet en algunos tutoriales sobre Arduino y otras placas puede encontrase el término "bits por segundos" <br>
+ *  intercambiado por baudios. En este caso concreto son equivalente dado que en cada estado de la señal se envia<br>
+ *  un único bit pero no tiene porque ser así en todos los casos por lo tanto "bits por segundos" y baudios no<br>
+ *  siempre son equivalentes.<br>
+ */<br>
+<br>
+</code>
+    <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+
+
+
+<li>Tras transferir el código abra la consola de monitorización (botón superior derecha en el que aparece una lupa). Cuando lo abra escriba números en el campo y pulse enviar. Podrá ver como va sumando el valor que se envia con todos los anteriores valores enviados.</li>
+
+</ol>
+
+<h2>Explicación del Código de este Ejemplo</h2>
+
+<p>Antes de cualquier método podemos ver una variable global (significa que cualquier función podrá hacer uso de ella) denominada sumaTotal. Esta variable será la encargada de llevar el recuento de las sumas.</p>
+
+<p>La función Setup se encarga de indicar la velocidad a la que se comunciará la placa con el ordenador, dar el valor inicial a la variable sumaTotal el valor de 0 y hacer una pequeña espera para que la comunciación entre el ordenador y la placa se inicie (existen formas más elegante de hacer eso, pero el objetivo es el mínimo número de sentencias nuevas).</p>
+
+<p>La función Loop muestra un mensaje solicitando un número, a continuación se inicia un bucle hará dormir/esperar a la placa hasta que reciba algo por el cable serial. Cuando se reciba un número las siguientes líneas lo guardarán en una varible de tipo numérica (int) y realizará la suma de la cantidad anterior más la nueva. Destacar que si lo que se recibe por serial no es un número la función Serial.parseInt() devolverá 0. Por último se muestra la suma total que lleva la placa.</p>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Team Members -->
+     
+
+   
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Taller de Internet of Things. Mónica Sánchez de Francisco y Álvaro Montero Montes. Universidad Carlos III de Madrid.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

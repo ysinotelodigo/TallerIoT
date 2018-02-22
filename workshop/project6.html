@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IoT Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">IoT Workshop</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Tutorial 6:
+        <small>Semáforo Móvil</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Tutorial 6: Semáforo Móvil</li>
+      </ol>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="img-fluid rounded mb-4" src="images/mainMobileTrafficLight.jpg" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+          <h2>Objetivo:</h2>
+          <p>El objetivo de este ejemplo es mostrar cómo crear un punto de acceso Wifi con la placa NodeMCU y un mini-servidor de páginas web que proporcionará una página al dispositivo móvil que se conecte para poder manejar las luces del semáforo.</p>
+<p>Este proyecto hace uso del circuito que simula un semáforo</p>
+        </div>
+<div class="col-12">
+     <h2>Pasos a Seguir</h2>
+<ol>
+    <li>Desconecte el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)</li>
+    <li>Coloque la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.</li>
+<img src="images/baseInicial.png" alt="Base Inicial"/>
+    <li>Coloque las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:</li>
+<img src="images/semaforo.png" alt="Semaforo"/>
+    <li>Conecte la placa al ordenador por el cable usb</li>
+    <li>Abra el entorno y copiar el siguiente código:</li>
+<code style="border-style: solid;display: block;">
+<br>
+/* Este poryecto ha sido diseñado usando un ejemplo de codigo encontrado en internet<br>
+ * a continución se presentan las licencias que expone el ejemplo inicial.<br>
+ */<br>
+<br>
+/*<br>
+ * Copyright (c) 2015, Majenko Technologies<br>
+ * All rights reserved.<br>
+ * <br>
+ * Redistribution and use in source and binary forms, with or without modification,<br>
+ * are permitted provided that the following conditions are met:<br>
+ * <br>
+ * * Redistributions of source code must retain the above copyright notice, this<br>
+ *&nbsp;&nbsp; list of conditions and the following disclaimer.<br>
+ * <br>
+ * * Redistributions in binary form must reproduce the above copyright notice, this<br>
+ *&nbsp;&nbsp; list of conditions and the following disclaimer in the documentation and/or<br>
+ *&nbsp;&nbsp; other materials provided with the distribution.<br>
+ * <br>
+ * * Neither the name of Majenko Technologies nor the names of its<br>
+ *&nbsp;&nbsp; contributors may be used to endorse or promote products derived from<br>
+ *&nbsp;&nbsp; this software without specific prior written permission.<br>
+ * <br>
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND<br>
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED<br>
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE<br>
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR<br>
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES<br>
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;<br>
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON<br>
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br>
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS<br>
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br>
+ */<br>
+<br>
+/* Create a WiFi access point and provide a web server on it. */<br>
+<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+#include &lt;WiFiClient.h&gt; <br>
+#include &lt;ESP8266WebServer.h&gt;<br>
+<br>
+/* Set these to your desired credentials. */<br>
+const char *ssid = "TallerIoTSemaforo";<br>
+<br>
+ESP8266WebServer server(80);<br>
+<br>
+<br>
+void apagarLuces() {<br>
+&nbsp;&nbsp;// Me aseguro de apagar todos los leds<br>
+&nbsp;&nbsp;digitalWrite(D8,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D5,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D1,LOW);<br>
+}<br>
+<br>
+/* Just a little test message.&nbsp;&nbsp;Go to http://192.168.4.1 in a web browser<br>
+ * connected to this access point to see it.<br>
+ */<br>
+void paginaPrincipal() {<br>
+&nbsp;&nbsp;// Me aseguro de apagar todos los leds<br>
+&nbsp;&nbsp;digitalWrite(D8,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D5,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D1,LOW);<br>
+&nbsp;&nbsp;const char webpage[]="&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt; IoT Semaforo&lt;/title&gt;&lt;style&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.lightItem {border: 2px solid #a1a1a1;width: 96px;background: white;height: 96px;border-radius: 50px;margin: 5px auto;}&nbsp;&nbsp;&nbsp;&nbsp; .trafficLight{border: 2px solid #a1a1a1;width: 120px;background: darkgreen;height: auto;margin: 5px auto 0px auto;}&nbsp;&nbsp;&nbsp;&nbsp; .trafficLightPost{border: 2px solid #a1a1a1;width: 20px;background: darkgreen;height: 180px;text-align: center;margin: 0px auto;}&nbsp;&nbsp;&nbsp;&nbsp; #offButton{border: 1px solid #a1a1a1;width: 30px;background: gray;height: 20px;text-align: center;}&lt;/style&gt;&lt;script&gt;&nbsp;&nbsp;&nbsp;&nbsp; var xmlhttp = new XMLHttpRequest();function apagarLuces(){document.getElementById(\"red\").style.background=\"white\";document.getElementById(\"orange\").style.background=\"white\";document.getElementById(\"green\").style.background=\"white\";xmlhttp.open(\"GET\", \"off\", true);xmlhttp.send();}&nbsp;&nbsp;&nbsp;&nbsp; function change(color,element){document.getElementById(\"red\").style.background=\"white\";document.getElementById(\"orange\").style.background=\"white\";document.getElementById(\"green\").style.background=\"white\";element.style.background=color;xmlhttp.open(\"GET\", color, true);xmlhttp.send();}&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=\"offButton\" onclick=\"apagarLuces();\"&gt;Off&lt;/div&gt;&lt;div class=\"trafficLight\"&gt;&nbsp;&nbsp;&lt;div class=\"lightItem\" id=\"red\" onclick=\"change('red',this);\"&gt;&lt;/div&gt;&nbsp;&nbsp;&lt;div class=\"lightItem\" id=\"orange\" onclick=\"change('orange',this);\"&gt;&lt;/div&gt;&nbsp;&nbsp;&lt;div class=\"lightItem\" id=\"green\" onclick=\"change('green',this);\"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=\"trafficLightPost\"&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;";<br>
+&nbsp;&nbsp;server.send(200, "text/html",webpage);<br>
+&nbsp;&nbsp;/* Webpage<br>
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt; IoT Semaforo &lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.lightItem {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #a1a1a1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 46px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: white;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 46px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 25px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 5px auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.trafficLight{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #a1a1a1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 60px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: darkgreen;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 5px auto 0px auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.trafficLightPost{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #a1a1a1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 10px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: darkgreen;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 180px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 0px auto;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#offButton{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid #a1a1a1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 30px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: gray;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 20px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var xmlhttp = new XMLHttpRequest();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function apagarLuces(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("red").style.background="white";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("orange").style.background="white";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("green").style.background="white";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp.open("GET", "off", true);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp.send();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function change(color,element){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("red").style.background="white";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("orange").style.background="white";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("green").style.background="white";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;element.style.background=color;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp.open("GET", color, true);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlhttp.send();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="offButton" onclick="apagarLuces();"&gt;Off&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="trafficLight"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="lightItem" id="red" onclick="change('red',this);"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="lightItem" id="orange" onclick="change('orange',this);"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="lightItem" id="green" onclick="change('green',this);"&gt;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="trafficLightPost"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+ */<br>
+}<br>
+<br>
+void encenderVerde() {<br>
+&nbsp;&nbsp;// Me aseguro de apagar todos los leds<br>
+&nbsp;&nbsp;digitalWrite(D8,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D5,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D1,LOW);<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje baja de 0 voltios en el pin D8<br>
+&nbsp;&nbsp;// Es decir, encender Led Verde<br>
+&nbsp;&nbsp;digitalWrite(D8,HIGH);<br>
+}<br>
+<br>
+void encenderAmbar() {<br>
+&nbsp;&nbsp;// Me aseguro de apagar todos los leds<br>
+&nbsp;&nbsp;digitalWrite(D8,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D5,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D1,LOW);<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje baja de 0 voltios en el pin D5<br>
+&nbsp;&nbsp;// Es decir, encender Led Ambar<br>
+&nbsp;&nbsp;digitalWrite(D5,HIGH);<br>
+}<br>
+<br>
+void encenderRojo() {<br>
+&nbsp;&nbsp;// Me aseguro de apagar todos los leds<br>
+&nbsp;&nbsp;digitalWrite(D8,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D5,LOW);<br>
+&nbsp;&nbsp;digitalWrite(D1,LOW);<br>
+&nbsp;&nbsp;// Indica que se envie la señal de voltaje baja de 0 voltios en el pin D5<br>
+&nbsp;&nbsp;// Es decir, encender Led Rojo<br>
+&nbsp;&nbsp;digitalWrite(D1,HIGH);<br>
+}<br>
+<br>
+void setup() {<br>
+	delay(1000);<br>
+	Serial.begin(115200);<br>
+	Serial.println();<br>
+	Serial.print("Configurando Punto de Acceso...");<br>
+	/* Si se desea poner contraseña se ha de indicar con un segundo argumento */<br>
+	WiFi.softAP(ssid);<br>
+<br>
+	IPAddress myIP = WiFi.softAPIP();<br>
+	Serial.print("Direccion IP del punto de acceso: ");<br>
+	Serial.println(myIP);<br>
+	server.on("/", paginaPrincipal);<br>
+&nbsp;&nbsp;server.on("/green", encenderVerde);<br>
+&nbsp;&nbsp;server.on("/orange", encenderAmbar);<br>
+&nbsp;&nbsp;server.on("/red", encenderRojo);<br>
+&nbsp;&nbsp;server.on("/off", apagarLuces);<br>
+	server.begin();<br>
+	Serial.println("Servidor de HTTP iniciado (Servidor de paginas webs)");<br>
+<br>
+&nbsp;&nbsp;// Indica la configuración de pines que se utilizarán<br>
+&nbsp;&nbsp;// Indica que el pin D1 será de salida (Led rojo)<br>
+&nbsp;&nbsp;pinMode(D1,OUTPUT);<br>
+&nbsp;&nbsp;// Indica que el pin D5 será de salida (Led ambar)<br>
+&nbsp;&nbsp;pinMode(D5,OUTPUT);<br>
+&nbsp;&nbsp;// Indica que el pin D8 será de salida (Led verde)<br>
+&nbsp;&nbsp;pinMode(D8,OUTPUT);<br>
+}<br>
+<br>
+void loop() {<br>
+	server.handleClient();<br>
+}
+<br>
+</code>
+    <li>Modifique el valor que se encuentra entre comillas en la línea 42 por uno inventado que pueda recordar facilmente. Este valor será el nombre del punto de acceso wifi al cual se conectará su móvil.</li>
+<li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+<li>Tras transferir el código busque en su dispositivo móvil una red wifi a la que conectarse. Seleccionela y vaya al navegador de su móvil e introduzca la siguiente dirección:</li>
+
+<b>http://192.168.4.1</b>
+
+
+<li> Pulse las luces del semáforo que le aparece en su pantalla móvil y verá como se encienden los leds de su circuito.</li>
+
+</ol>
+
+<h2>Explicación del Código de este Ejemplo</h2>
+
+<p>TODO</p>
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Team Members -->
+     
+
+   
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Taller de Internet of Things. Mónica Sánchez de Francisco y Álvaro Montero Montes. Universidad Carlos III de Madrid.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

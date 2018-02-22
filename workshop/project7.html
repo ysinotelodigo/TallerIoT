@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IoT Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">IoT Workshop</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Tutorial 7:
+        <small>Telégrafo</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Tutorial 7: Telégrafo</li>
+      </ol>
+
+      <!-- Intro Content -->
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="img-fluid rounded mb-4" src="images/mainTelegraph.jpg" alt="">
+        </div>
+        <div class="col-12 col-md-6">
+          <h2>Objetivo:</h2>
+          <p>El objetivo de este ejemplo es mostrar cómo se puede conectar la placa a un broker ("servidor") mediante el protocolo MQTT. Para ello se ha desarrollado un ejemplo de un telégrafo en el que dos personas se podrán comunicar mediante un botón y un zumbador.</p>
+        </div>
+<div class="col-12">
+     <h2>Pasos a Seguir</h2>
+<ol>
+    <li>Desconecte el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)</li>
+    <li>Coloque la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.</li>
+<img src="images/baseInicial.png" alt="Base Inicial"/>
+    <li>Coloque las resistencias, el zumbador, el botón y cables según el esquema de circuito que se muestra a continuación:</li>
+<img src="images/telegrafo.png" alt="Telegrafo"/>
+    <li>Conecte la placa al ordenador por el cable usb</li>
+    <li>Abra el entorno y copiar el siguiente código:</li>
+<code style="border-style: solid;display: block;">
+<br>
+/***************************************************<br>
+&nbsp;&nbsp;Adafruit MQTT Library ESP8266 Example<br>
+&nbsp;&nbsp;Must use ESP8266 Arduino from:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/esp8266/Arduino<br>
+&nbsp;&nbsp;Works great with Adafruit's Huzzah ESP board & Feather<br>
+&nbsp;&nbsp;----&gt; https://www.adafruit.com/product/2471<br>
+&nbsp;&nbsp;----&gt; https://www.adafruit.com/products/2821<br>
+&nbsp;&nbsp;Adafruit invests time and resources providing this open source code,<br>
+&nbsp;&nbsp;please support Adafruit and open-source hardware by purchasing<br>
+&nbsp;&nbsp;products from Adafruit!<br>
+&nbsp;&nbsp;Written by Tony DiCola for Adafruit Industries.<br>
+&nbsp;&nbsp;MIT license, all text above must be included in any redistribution<br>
+ ****************************************************/<br>
+#include &lt;ESP8266WiFi.h&gt;<br>
+#include "Adafruit_MQTT.h"<br>
+#include "Adafruit_MQTT_Client.h"<br>
+<br>
+/************************* WiFi Access Point *********************************/<br>
+<br>
+// Introducir el nombre de la red wifi<br>
+#define WLAN_SSID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "nombre red wifi"<br>
+// Introducir la contraseña de la red wifi<br>
+#define WLAN_PASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "contraseña wifi"<br>
+<br>
+/************************* Adafruit.io Setup *********************************/<br>
+<br>
+#define AIO_SERVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"192.168.0.103"<br>
+#define AIO_SERVERPORT&nbsp;&nbsp;1883&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // use 8883 for SSL<br>
+<br>
+// Aqui os se tiene que indicar a <br>
+#define EMISOR "Alice"<br>
+#define RECEPTOR "Bob"<br>
+<br>
+/************ Global State (you don't need to change this!) ******************/<br>
+<br>
+// Create an ESP8266 WiFiClient class to connect to the MQTT server.<br>
+WiFiClient client;<br>
+<br>
+Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT);<br>
+<br>
+/****************************** Feeds ***************************************/<br>
+<br>
+<br>
+Adafruit_MQTT_Publish buttonpressed = Adafruit_MQTT_Publish(&mqtt, RECEPTOR);<br>
+<br>
+<br>
+Adafruit_MQTT_Subscribe buzzer = Adafruit_MQTT_Subscribe(&mqtt, EMISOR);<br>
+<br>
+/*************************** Sketch Code ************************************/<br>
+<br>
+// Bug workaround for Arduino 1.6.6, it seems to need a function declaration<br>
+// for some reason (only affects ESP8266, likely an arduino-builder bug).<br>
+void MQTT_connect();<br>
+<br>
+void setup() {<br>
+&nbsp;&nbsp;Serial.begin(9600);<br>
+&nbsp;&nbsp;delay(10);<br>
+<br>
+&nbsp;&nbsp;Serial.println(F("Adafruit MQTT demo"));<br>
+<br>
+&nbsp;&nbsp;// Connect to WiFi access point.<br>
+&nbsp;&nbsp;Serial.println(); Serial.println();<br>
+&nbsp;&nbsp;Serial.print("Connecting to ");<br>
+&nbsp;&nbsp;Serial.println(WLAN_SSID);<br>
+<br>
+&nbsp;&nbsp;WiFi.begin(WLAN_SSID, WLAN_PASS);<br>
+&nbsp;&nbsp;while (WiFi.status() != WL_CONNECTED) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;delay(500);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Serial.print(".");<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;Serial.println();<br>
+<br>
+&nbsp;&nbsp;Serial.println("WiFi connected");<br>
+&nbsp;&nbsp;Serial.println("IP address: "); Serial.println(WiFi.localIP());<br>
+<br>
+&nbsp;&nbsp;// Setup MQTT subscription for onoff feed.<br>
+&nbsp;&nbsp;mqtt.subscribe(&buzzer);<br>
+<br>
+&nbsp;&nbsp;pinMode(D5,INPUT);<br>
+}<br>
+int previous=0;<br>
+uint32_t x=0;<br>
+<br>
+void loop() {<br>
+&nbsp;&nbsp;// Ensure the connection to the MQTT server is alive (this will make the first<br>
+&nbsp;&nbsp;// connection and automatically reconnect when disconnected).&nbsp;&nbsp;See the MQTT_connect<br>
+&nbsp;&nbsp;// function definition further below.<br>
+&nbsp;&nbsp;MQTT_connect();<br>
+<br>
+&nbsp;&nbsp;// this is our 'wait for incoming subscription packets' busy subloop<br>
+&nbsp;&nbsp;// try to spend your time here<br>
+<br>
+&nbsp;&nbsp;Adafruit_MQTT_Subscribe *subscription;<br>
+&nbsp;&nbsp;while ((subscription = mqtt.readSubscription(10))) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (subscription == &buzzer) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Está un poquito ñapa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String recibido = (char *)buzzer.lastread;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(recibido.equals("1")){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tone( D1, 440);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noTone(D1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;int d5Value= digitalRead(D5);<br>
+&nbsp;&nbsp;if(previous != d5Value){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buttonpressed.publish(d5Value);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;previous = d5Value;<br>
+&nbsp;&nbsp;}<br>
+ <br>
+<br>
+&nbsp;&nbsp;// ping the server to keep the mqtt connection alive<br>
+&nbsp;&nbsp;// NOT required if you are publishing once every KEEPALIVE seconds<br>
+&nbsp;&nbsp;/*<br>
+&nbsp;&nbsp;if(! mqtt.ping()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mqtt.disconnect();<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;*/<br>
+}<br>
+<br>
+// Function to connect and reconnect as necessary to the MQTT server.<br>
+// Should be called in the loop function and it will take care if connecting.<br>
+void MQTT_connect() {<br>
+&nbsp;&nbsp;int8_t ret;<br>
+<br>
+&nbsp;&nbsp;// Stop if already connected.<br>
+&nbsp;&nbsp;if (mqtt.connected()) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;Serial.print("Connecting to MQTT... ");<br>
+<br>
+&nbsp;&nbsp;uint8_t retries = 3;<br>
+&nbsp;&nbsp;while ((ret = mqtt.connect()) != 0) { // connect will return 0 for connected<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println(mqtt.connectErrorString(ret));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial.println("Retrying MQTT connection in 5 seconds...");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mqtt.disconnect();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delay(5000);&nbsp;&nbsp;// wait 5 seconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; retries--;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (retries == 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // basically die and wait for WDT to reset me<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;Serial.println("MQTT Connected!");<br>
+}
+<br>
+</code>
+    <li>Modique el nombre del Emisor y Receptor de los mensajes que se morse. Hable con otro grupo para intercambiaros el Emisor y Receptor. (Línea 33 y 34)</li>
+<li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+<li>Tras transferir el código abra la consola de monitorización y verifique que se conecta a la red.</li>
+<li> Una vez conectados ambos se podrá empezar la comunicación por morse</li>
+
+</ol>
+
+<h2>Explicación del Código de este Ejemplo</h2>
+
+<p>TODO</p>
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- Team Members -->
+     
+
+   
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Taller de Internet of Things. Mónica Sánchez de Francisco y Álvaro Montero Montes. Universidad Carlos III de Madrid.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
