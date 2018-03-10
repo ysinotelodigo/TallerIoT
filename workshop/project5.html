@@ -16,6 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
 
+    <link href="vendor/fontawesome/css/fontawesome-all.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -66,12 +68,34 @@
 <ol>
     <li>Desconecte el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)</li>
     <li>Coloque la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.</li>
-<img src="images/baseInicial.png" alt="Base Inicial"/>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+            <img src="images/baseInicial.png" alt="Base Inicial"/>
+    </div>
+    <div class="card-footer small text-muted">
+        Protoboard conectada con la NodeMCU.
+    </div>
+    </div>
+
+    
     <li>Coloque las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:</li>
-<img src="images/semaforo.png" alt="Semaforo"/>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+            <img src="images/semaforo.png" alt="Semaforo"/>
+    </div>
+    <div class="card-footer small text-muted">
+        Circuito Semáforo Completado.
+    </div>
+    </div>
+
+
     <li>Conecte la placa al ordenador por el cable usb</li>
     <li>Abra el entorno y copiar el siguiente código:</li>
-<code style="border-style: solid;display: block;">
+    <div class="my-3 card">
+       
+        <div class="card-header" style="font-weight: bold;">
+            <i class="fas fa-code"></i> Código Semáforo</div>
+        <div class="card-body" id="code" style="font-family: Courier New;font-size: 0.7em;">
 <br>
 void setup() {<br>
 &nbsp;&nbsp;// Pon aquí tu código que será ejecutado solo una vez:<br>
@@ -117,13 +141,33 @@ void loop() {<br>
 &nbsp;&nbsp;digitalWrite(D1,LOW);<br>
 }<br>
 <br>
-</code>
-    <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+</div>
+<div class="card-footer small text-muted">
+    <button type="button" class="btn btn-success btn-block"  onclick="copyToClipboard('#code')">Presionar para copiar el código en el portapapeles</button>
+</div>
 
+
+</div>
+    <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+    <img src="images/upload.png" alt="botón de upload" />
+    </div>
+    <div class="card-footer small text-muted">
+        Botón para subir ("upload") el código a la placa.
+    </div>
+    </div>
 
 
 <li>Tras transferir el código podrá ver que los leds se comportan como si fueran las luces de un semáforo. Si pulsas sobre el botón de la consola de monitorización (botón superior derecha en el que aparece una lupa) podrás ver que por consola indica qué led se va a encender.</li>
-
+<div class="my-3 card">
+    <div class="card-body text-center">
+<img  src="images/monitor.png" alt="botón del monitor serial" />
+</div>
+<div class="card-footer small text-muted">
+    Botón para acceder al cable serial.
+</div>
+</div>
 </ol>
 
 <h2>Explicación del Código de este Ejemplo</h2>
@@ -159,7 +203,7 @@ void loop() {<br>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/script.js"></script>
   </body>
 
 </html>

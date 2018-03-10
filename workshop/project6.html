@@ -16,6 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
 
+    <link href="vendor/fontawesome/css/fontawesome-all.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -67,12 +69,30 @@
 <ol>
     <li>Desconecte el cable usb de la placa o del ordenador (con el objetivo de evitar cortocircuitos)</li>
     <li>Coloque la parte lateral donde aparecen más pines con el prefijo "D" conectada a la placa en la primera columna. Los demás pines quedarán en el aire como en la imagen.</li>
-<img src="images/baseInicial.png" alt="Base Inicial"/>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+            <img src="images/baseInicial.png" alt="Base Inicial"/>
+    </div>
+    <div class="card-footer small text-muted">
+        Protoboard conectada con la NodeMCU.
+    </div>
+    </div>
     <li>Coloque las resistencias, leds y cables según el esquema de circuito que se muestra a continuación:</li>
-<img src="images/semaforo.png" alt="Semaforo"/>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+            <img src="images/semaforo.png" alt="Semaforo"/>
+    </div>
+    <div class="card-footer small text-muted">
+        Circuito Semáforo Completado.
+    </div>
+    </div>
     <li>Conecte la placa al ordenador por el cable usb</li>
     <li>Abra el entorno y copiar el siguiente código:</li>
-<code style="border-style: solid;display: block;">
+    <div class="my-3 card">
+       
+        <div class="card-header" style="font-weight: bold;">
+            <i class="fas fa-code"></i> Código Semáforo Móvil</div>
+        <div class="card-body" id="code" style="font-family: Courier New;font-size: 0.7em;">
 <br>
 /* Este poryecto ha sido diseñado usando un ejemplo de codigo encontrado en internet<br>
  * a continución se presentan las licencias que expone el ejemplo inicial.<br>
@@ -270,9 +290,34 @@ void loop() {<br>
 	server.handleClient();<br>
 }
 <br>
-</code>
-    <li>Modifique el valor que se encuentra entre comillas en la línea 42 por uno inventado que pueda recordar facilmente. Este valor será el nombre del punto de acceso wifi al cual se conectará su móvil.</li>
+</div>
+<div class="card-footer small text-muted">
+    <button type="button" class="btn btn-success btn-block"  onclick="copyToClipboard('#code')">Presionar para copiar el código en el portapapeles</button>
+</div>
+
+
+</div>
+    <li>Modifique el valor que se encuentra entre comillas en la línea 44 por uno inventado que pueda recordar facilmente. Este valor será el nombre del punto de acceso wifi al cual se conectará su móvil.</li>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+            <img src="images/ssid.png" alt="SSID"/>
+    </div>
+    <div class="card-footer small text-muted">
+        Línea para modificar el nombre de la red.
+    </div>
+    </div>
+
 <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+
+<div class="my-3 card">
+    <div class="card-body text-center">
+<img src="images/upload.png" alt="botón de upload" />
+</div>
+<div class="card-footer small text-muted">
+    Botón para subir ("upload") el código a la placa.
+</div>
+</div>
+
 <li>Tras transferir el código busque en su dispositivo móvil una red wifi a la que conectarse. Seleccionela y vaya al navegador de su móvil e introduzca la siguiente dirección:</li>
 
 <b>http://192.168.4.1</b>
@@ -309,7 +354,7 @@ void loop() {<br>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/script.js"></script>
   </body>
 
 </html>

@@ -16,6 +16,9 @@
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
 
+    <link href="vendor/fontawesome/css/fontawesome-all.css" rel="stylesheet">
+
+
   </head>
 
   <body>
@@ -66,7 +69,11 @@
 <ol>
     <li>Conecte la placa al ordenador por el cable usb.</li>
     <li>Abra el entorno y copiar el siguiente código:</li>
-<code style="border-style: solid;display: block;">
+    <div class="my-3 card">
+       
+        <div class="card-header" style="font-weight: bold;">
+            <i class="fas fa-code"></i> Código Calculadora</div>
+        <div class="card-body" id="code" style="font-family: Courier New;font-size: 0.7em;">
 <br>
 // Esta variable almacenará la cantidad que lleva sumada<br>
 int sumaTotal;<br>
@@ -117,12 +124,33 @@ void loop() {<br>
  *  siempre son equivalentes.<br>
  */<br>
 <br>
-</code>
-    <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+</div>
+<div class="card-footer small text-muted">
+    <button type="button" class="btn btn-success btn-block"  onclick="copyToClipboard('#code')">Presionar para copiar el código en el portapapeles</button>
+</div>
 
+
+</div>
+    <li>Pulse el segundo botón del entorno para compilar y subir el código.</li>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+    <img src="images/upload.png" alt="botón de upload" />
+    </div>
+    <div class="card-footer small text-muted">
+        Botón para subir ("upload") el código a la placa.
+    </div>
+    </div>
 
 
 <li>Tras transferir el código abra la consola de monitorización (botón superior derecha en el que aparece una lupa). Cuando lo abra escriba números en el campo y pulse enviar. Podrá ver como va sumando el valor que se envia con todos los anteriores valores enviados.</li>
+<div class="my-3 card">
+    <div class="card-body text-center">
+<img  src="images/monitor.png" alt="botón del monitor serial" />
+</div>
+<div class="card-footer small text-muted">
+    Botón para acceder al cable serial.
+</div>
+</div>
 
 </ol>
 
@@ -156,7 +184,7 @@ void loop() {<br>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="js/script.js"></script>
   </body>
 
 </html>
