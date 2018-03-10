@@ -247,18 +247,28 @@ void MQTT_connect() {<br>
 <br>
 </div>
 <div class="card-footer small text-muted">
-    <button type="button" class="btn btn-success btn-block"  onclick="copyToClipboard('#code')">Presionar para copiar el código en el portapapeles</button>
+    <button type="button" class="btn btn-success btn-block"  onclick="copyToClipboard('#code','#copyButton')" id="copyButton">Presionar para copiar el código en el portapapeles</button>
 </div>
 
 
 </div>
-    <li>Modique el nombre del Emisor y Receptor de los mensajes que se morse. Hable con otro grupo para intercambiaros el Emisor y Receptor. (Línea 33 y 34)</li>
+    <li>Modique el nombre del Emisor y Receptor de los mensajes morse. Inventaros un alias que será vuestro emisor e intercambialo con otro grupo (el otro grupo deberá de ponerlo como receptor). (Línea 33 y 34).</li>
     <div class="my-3 card">
         <div class="card-body text-center">
             <img src="images/alias.png" alt="SSID"/>
     </div>
     <div class="card-footer small text-muted">
         Línea para modificar los alias de los dispositivos.
+    </div>
+    </div>
+
+    <li>Modique las credenciales de la red Wifi. (Línea 23 y 25).</li>
+    <div class="my-3 card">
+        <div class="card-body text-center">
+            <img src="images/wifi.png" alt="SSID"/>
+    </div>
+    <div class="card-footer small text-muted">
+        Línea para modificar el SSID (Service Set Identifier) y la contraseña para conectarse a un Punto de Acceso Wifi.
     </div>
     </div>
 
